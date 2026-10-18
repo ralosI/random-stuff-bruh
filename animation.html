@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Throw Animation | Cursed Dojo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/animation.js" defer></script>
+</head>
+
+<body class="animation-page">
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">領</span>
+    <span>CURSED <b>DOJO</b>
+      <small>JUJUTSU-INSPIRED JUDO LAB</small>
+    </span>
+  </a>
+
+  <nav aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="basics.html">Basics & Throws</a>
+    <a href="steps.html">Step-by-Step</a>
+  </nav>
+</header>
+
+<main class="page-wrap">
+  <div class="page-heading animation-heading">
+    <p class="eyebrow">ANIMATION CHAMBER / LIVE SIMULATION</p>
+
+    <h1 id="throw-title">THROW <span>ANIMATION</span></h1>
+
+    <p id="throw-subtitle">
+      A simplified, stylized movement study. This is not a full
+      technical demonstration.
+    </p>
+  </div>
+
+  <section class="animation-layout">
+    <div class="stage-panel">
+      <div class="stage-top">
+        <span><i class="live-dot"></i> MOTION STUDY</span>
+        <span id="phase-label">READY / KUZUSHI</span>
+      </div>
+
+      <canvas id="dojo-canvas"
+        width="900"
+        height="500"
+        aria-label="Animated simplified humanoid judo figures">
+      </canvas>
+
+      <div class="timeline">
+        <span id="frame-count">FRAME 00</span>
+
+        <div class="timeline-track">
+          <div id="timeline-fill"></div>
+        </div>
+
+        <span>2D / PROCEDURAL</span>
+      </div>
+
+      <div class="control-row">
+        <button class="button primary" id="play-btn">
+          ▶ PLAY ANIMATION
+        </button>
+
+        <button class="button ghost" id="reset-btn">
+          ↺ RESET
+        </button>
+
+        <label class="speed-control">
+          SPEED
+          <select id="speed-select">
+            <option value="0.65">SLOW</option>
+            <option value="1" selected>NORMAL</option>
+            <option value="1.35">FAST</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <aside class="motion-info">
+      <p class="eyebrow">WHAT TO OBSERVE</p>
+
+      <h2 id="principle-title">KUZUSHI</h2>
+
+      <p id="principle-text">
+        Watch how the partner's balance shifts before the turning movement.
+      </p>
+
+      <div class="phase-key">
+        <div>
+          <span>01</span>
+          <p><b>Kuzushi</b><small>Disrupt balance</small></p>
+        </div>
+
+        <div>
+          <span>02</span>
+          <p><b>Tsukuri</b><small>Enter / fit in</small></p>
+        </div>
+
+        <div>
+          <span>03</span>
+          <p><b>Kake</b><small>Complete motion</small></p>
+        </div>
+      </div>
+
+      <div class="math-box">
+        <p class="eyebrow">PHYSICS NOTE</p>
+        <h3 id="math-title">COM & BASE</h3>
+        <p id="math-text">
+          A stable base helps keep the centre of mass supported.
+          Kuzushi changes that relationship.
+        </p>
+      </div>
+
+      <a id="guide-link"
+        class="button ghost full-width"
+        href="steps.html">
+        OPEN STEP-BY-STEP GUIDE ↗
+      </a>
+    </aside>
+  </section>
+
+  <p class="disclaimer">
+    Animation is schematic and does not guarantee correct technique.
+    Do not copy throws from a screen. Learn with a qualified judo
+    instructor on proper mats.
+  </p>
+</main>
+
+<footer>
+  <span>CURSED DOJO © 2026</span>
+  <span>LEARN THE PRINCIPLE, NOT JUST THE MOVE.</span>
+</footer>
+
+</body>
+</html>

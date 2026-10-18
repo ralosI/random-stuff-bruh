@@ -1,216 +1,1295 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Step-by-Step | Cursed Dojo</title>
+  <meta name="theme-color" content="#101018">
+  <title>Kuzushi & Throw Guides | Cursed Dojo</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/site.js" defer></script>
+
+  <style>
+    .manual {
+      max-width: 1250px;
+      margin: auto;
+      padding: 45px 26px;
+    }
+
+    .manual-hero {
+      margin-bottom: 30px;
+    }
+
+    .manual-hero h1 {
+      font: 900 clamp(43px, 7vw, 76px)/.92
+        "Barlow Condensed", Impact, sans-serif;
+      margin: 0;
+    }
+
+    .manual-hero h1 span {
+      color: var(--pink);
+    }
+
+    .manual-hero > p:last-child {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .direction-primer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      margin: 25px 0 42px;
+    }
+
+    .direction-primer h2 {
+      font: 800 25px "Barlow Condensed", Impact, sans-serif;
+      margin: 0 0 8px;
+    }
+
+    .direction-primer p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .compass {
+      display: grid;
+      grid-template-columns: repeat(3, 43px);
+      grid-template-rows: repeat(3, 37px);
+      gap: 4px;
+      justify-content: center;
+      align-content: center;
+      min-height: 145px;
+      background: #12121c;
+      border: 1px solid var(--line);
+    }
+
+    .compass span {
+      display: grid;
+      place-items: center;
+      color: #858297;
+      font-size: 21px;
+      background: #1a1a27;
+    }
+
+    .compass .front {
+      color: var(--pink);
+      background: #ff476f1c;
+    }
+
+    .compass .back {
+      color: #b5a9ff;
+      background: #9b8cff1c;
+    }
+
+    .compass-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .6px;
+    }
+
+    .technique {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      margin-bottom: 35px;
+      scroll-margin-top: 95px;
+      overflow: hidden;
+    }
+
+    .technique-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 25px;
+      background: #15151f;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .heading-group {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      min-width: 0;
+    }
+
+    .technique-number {
+      color: var(--pink);
+      font: 900 49px/.9 "Barlow Condensed", Impact, sans-serif;
+    }
+
+    .technique-type {
+      color: var(--violet);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin: 0 0 7px;
+    }
+
+    .technique-head h2 {
+      font: 900 clamp(28px, 4vw, 42px)/1
+        "Barlow Condensed", Impact, sans-serif;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .japanese {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 7px;
+    }
+
+    .study-label {
+      flex-shrink: 0;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .technique-body {
+      padding: 25px;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .video-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 9px;
+      letter-spacing: 1px;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .video-label span:first-child {
+      color: var(--pink);
+    }
+
+    .video-frame {
+      aspect-ratio: 16 / 9;
+      background: #08080d;
+      border: 1px solid var(--line);
+    }
+
+    .video-frame iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-fallback {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--pink);
+      font-size: 10px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .video-fallback:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .overview h3 {
+      font: 800 26px "Barlow Condensed", Impact, sans-serif;
+      margin: 0 0 12px;
+    }
+
+    .overview > p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.95;
+      margin: 0 0 13px;
+    }
+
+    .overview .key-point {
+      border-left: 3px solid var(--pink);
+      background: #22222e;
+      padding: 15px 17px;
+      margin-top: 18px;
+    }
+
+    .key-point strong {
+      display: block;
+      color: var(--pink);
+      font-size: 9px;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+    }
+
+    .key-point p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 30px 0;
+    }
+
+    .kuzushi-section {
+      border: 1px solid #ff476f66;
+      background: #ff476f08;
+      padding: 24px;
+    }
+
+    .kuzushi-heading {
+      margin-bottom: 20px;
+    }
+
+    .kuzushi-heading .eyebrow {
+      margin-bottom: 8px;
+    }
+
+    .kuzushi-heading h3 {
+      font: 900 clamp(27px, 4vw, 38px)/1
+        "Barlow Condensed", Impact, sans-serif;
+      margin: 0 0 10px;
+    }
+
+    .kuzushi-heading > p:last-child {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+      margin: 0;
+      max-width: 780px;
+    }
+
+    .direction-card {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      padding: 20px;
+      background: #12121c;
+      border: 1px solid var(--line);
+      margin: 18px 0;
+    }
+
+    .direction-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 175px;
+      border-right: 1px solid var(--line);
+      padding-right: 18px;
+    }
+
+    .direction-word {
+      color: var(--pink);
+      font: 900 30px/.95 "Barlow Condensed", Impact, sans-serif;
+      text-align: center;
+    }
+
+    .direction-arrow {
+      display: block;
+      font: 900 66px/.98 "Arial", sans-serif;
+      text-align: center;
+      color: var(--pink);
+      margin: 4px 0;
+      text-shadow: 0 0 24px #ff476f30;
+    }
+
+    .direction-subtitle {
+      font-size: 9px;
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: .7px;
+      font-weight: 800;
+    }
+
+    .direction-details h4 {
+      font: 800 23px "Barlow Condensed", Impact, sans-serif;
+      margin: 0 0 9px;
+    }
+
+    .direction-details > p {
+      font-size: 11px;
+      line-height: 1.9;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+
+    .direction-details .direction-emphasis {
+      color: var(--text);
+      border-top: 1px solid var(--line);
+      padding-top: 11px;
+      margin-top: 10px;
+    }
+
+    .direction-emphasis b {
+      color: var(--pink);
+    }
+
+    .not-the-same {
+      padding: 14px 16px;
+      background: #22222e;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.85;
+    }
+
+    .not-the-same strong {
+      color: var(--text);
+    }
+
+    .phases-heading {
+      margin: 29px 0 15px;
+    }
+
+    .phases-heading h3 {
+      font: 800 29px "Barlow Condensed", Impact, sans-serif;
+      margin: 0 0 8px;
+    }
+
+    .phases-heading p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .phase-card {
+      border: 1px solid var(--line);
+      background: #14141d;
+      padding: 19px;
+    }
+
+    .phase-index {
+      font: 800 29px "Barlow Condensed", Impact, sans-serif;
+      color: var(--pink);
+    }
+
+    .phase-card h4 {
+      font: 800 22px "Barlow Condensed", Impact, sans-serif;
+      margin: 8px 0;
+    }
+
+    .phase-card p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .phase-card .observe {
+      border-top: 1px solid var(--line);
+      margin-top: 13px;
+      padding-top: 12px;
+    }
+
+    .phase-card .observe b {
+      color: var(--pink);
+      display: block;
+      font-size: 9px;
+      letter-spacing: .7px;
+      margin-bottom: 5px;
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin-top: 20px;
+    }
+
+    .analysis-card {
+      background: #191923;
+      border: 1px solid var(--line);
+      padding: 19px;
+    }
+
+    .analysis-card h4 {
+      font-size: 11px;
+      margin: 0 0 12px;
+      letter-spacing: .5px;
+    }
+
+    .analysis-card ul {
+      margin: 0;
+      padding-left: 17px;
+    }
+
+    .analysis-card li {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+      margin: 6px 0;
+    }
+
+    .coach-question {
+      margin-top: 15px;
+      background: #22222e;
+      padding: 17px 19px;
+      display: flex;
+      gap: 13px;
+      align-items: start;
+    }
+
+    .coach-question .question {
+      color: var(--pink);
+      font: 800 28px "Barlow Condensed", Impact, sans-serif;
+    }
+
+    .coach-question strong {
+      font-size: 10px;
+      letter-spacing: .8px;
+    }
+
+    .coach-question p {
+      font-size: 11px;
+      line-height: 1.85;
+      color: var(--muted);
+      margin: 6px 0 0;
+    }
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .jump-links a {
+      color: var(--pink);
+      font-weight: 800;
+      font-size: 10px;
+      text-decoration: none;
+    }
+
+    .jump-links a:hover {
+      text-decoration: underline;
+    }
+
+    .safety {
+      border: 1px solid #ff476f66;
+      padding: 20px;
+      margin-bottom: 25px;
+      background: #ff476f08;
+    }
+
+    .safety strong {
+      display: block;
+      color: var(--pink);
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+    }
+
+    .safety p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    @media(max-width: 850px) {
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-column {
+        max-width: 740px;
+      }
+
+      .direction-card {
+        grid-template-columns: 145px minmax(0, 1fr);
+      }
+
+      .phase-card {
+        padding: 15px;
+      }
+    }
+
+    @media(max-width: 600px) {
+      .manual {
+        padding: 32px 15px;
+      }
+
+      .direction-primer {
+        grid-template-columns: 1fr;
+        padding: 17px;
+      }
+
+      .technique-head {
+        padding: 17px;
+      }
+
+      .study-label {
+        display: none;
+      }
+
+      .technique-number {
+        font-size: 39px;
+      }
+
+      .technique-body {
+        padding: 15px;
+      }
+
+      .kuzushi-section {
+        padding: 15px;
+      }
+
+      .direction-card {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .direction-visual {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 0 0 14px;
+        min-height: 135px;
+      }
+
+      .direction-arrow {
+        font-size: 56px;
+      }
+
+      .phase-grid,
+      .analysis-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .jump-links {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
-<body>
 
-<header class="topbar">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">領</span>
-    <span>CURSED <b>DOJO</b>
-      <small>JUJUTSU-INSPIRED JUDO LAB</small>
-    </span>
-  </a>
+<body id="top">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">領</span>
+      <span>
+        CURSED <b>DOJO</b>
+        <small>JUJUTSU-INSPIRED JUDO LAB</small>
+      </span>
+    </a>
 
-  <button class="menu-toggle"
-    aria-expanded="false"
-    aria-controls="main-nav">MENU</button>
+    <button class="menu-toggle"
+      aria-expanded="false"
+      aria-controls="main-nav">MENU</button>
 
-  <nav id="main-nav" aria-label="Main navigation">
-    <a href="index.html">Home</a>
-    <a href="basics.html">Basics & Throws</a>
-    <a class="active" href="steps.html">Step-by-Step</a>
-  </nav>
-</header>
+    <nav id="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="basics.html">Basics &amp; Throws</a>
+      <a class="active" href="steps.html">Step-by-Step</a>
+    </nav>
+  </header>
 
-<main class="page-wrap">
-  <div class="page-heading">
-    <p class="eyebrow">FIELD MANUAL / 002</p>
-    <h1>STUDY THE <span>SEQUENCE</span></h1>
-    <p>
-      These are learning outlines, not instructions to practise throws
-      without a coach. Exact grips and entries can vary by side and
-      teaching method.
-    </p>
-  </div>
+  <main class="manual">
+    <section class="manual-hero">
+      <p class="eyebrow">FIELD MANUAL / KUZUSHI STUDIES</p>
+      <h1>BREAK THE <span>BALANCE.</span></h1>
+      <p>
+        Before studying the full throw, understand where the
+        partner's balance needs to go. Each technique has a
+        characteristic direction of kuzushi. The arrows below
+        describe the general direction of uke's imbalance, not
+        necessarily the direction tori moves.
+      </p>
+    </section>
 
-  <section class="guide-list">
-
-    <article class="guide-card" id="ogoshi">
-      <div class="guide-title">
-        <span class="throw-number">01</span>
-
-        <div>
-          <p class="throw-type">KOSHI-WAZA / HIP</p>
-          <h2>O-GOSHI</h2>
-        </div>
-
-        <a class="button primary small"
-          href="animation.html?throw=ogoshi"
-          target="_blank" rel="noopener">VIEW ANIMATION ↗</a>
+    <section class="direction-primer">
+      <div>
+        <p class="eyebrow">FIRST, UNDERSTAND THE DIRECTION</p>
+        <h2>FRONT, BACK, OR DIAGONAL?</h2>
+        <p>
+          Imagine the partner standing upright. Their front is the
+          direction their toes and chest face; their back is the
+          direction of their heels. A forward direction is toward
+          the front of their body. A backward direction is toward
+          the rear. Many techniques use a diagonal direction rather
+          than a perfectly straight line.
+          The direction can be mirrored when the technique is done
+          on the opposite side.
+        </p>
       </div>
 
-      <ol class="steps">
-        <li>
-          <b>Kuzushi · Off-balance</b>
-          <p>
-            With a coach-approved lapel/collar and sleeve grip, guide the
-            partner's balance forward. Do not yank the neck or arm.
-          </p>
-        </li>
+      <div>
+        <div class="compass" aria-label="Directional guide: front is up, back is down">
+          <span></span><span class="front">↑</span><span></span>
+          <span>↖</span><span>●</span><span>↗</span>
+          <span></span><span class="back">↓</span><span></span>
+        </div>
+        <div class="compass-label">
+          <span style="color:var(--pink)">↑ FRONT / TOES</span>
+          <span style="color:var(--violet)">↓ BACK / HEELS</span>
+        </div>
+      </div>
+    </section>
 
-        <li>
-          <b>Tsukuri · Entry</b>
-          <p>
-            Turn in close and position the hips in front of the partner's
-            centre, keeping your own posture and balance. The coach should
-            check your distance and foot placement.
-          </p>
-        </li>
+    <!-- O-GOSHI -->
+    <section class="technique" id="ogoshi">
+      <header class="technique-head">
+        <div class="heading-group">
+          <span class="technique-number">01</span>
+          <div>
+            <p class="technique-type">KOSHI-WAZA / HIP TECHNIQUE</p>
+            <h2>O-GOSHI</h2>
+            <p class="japanese">大腰 · Major hip throw</p>
+          </div>
+        </div>
+        <span class="study-label">STUDY 001</span>
+      </header>
 
-        <li>
-          <b>Kake · Execution</b>
-          <p>
-            The hip acts as a turning point as the partner is guided over.
-            The instructor teaches the correct direction, control, and
-            safe landing before any full throw.
-          </p>
-        </li>
+      <div class="technique-body">
+        <div class="top-grid">
+          <div>
+            <div class="video-label">
+              <span>THROW DEMONSTRATION</span>
+              <span>VIDEO REFERENCE</span>
+            </div>
+            <div class="video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/yhu1mfy2vJ4?rel=0"
+                title="O-goshi demonstration"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+            <a class="video-fallback"
+              href="https://www.youtube.com/watch?v=yhu1mfy2vJ4"
+              target="_blank" rel="noopener noreferrer">
+              OPEN VIDEO ON YOUTUBE ↗
+            </a>
+          </div>
 
-        <li>
-          <b>Review</b>
-          <p>
-            Can you explain why moving the centre of mass forward makes
-            the entry more effective? Practise the entry slowly with
-            supervision.
-          </p>
-        </li>
-      </ol>
-    </article>
-
-    <article class="guide-card" id="osotogari">
-      <div class="guide-title">
-        <span class="throw-number">02</span>
-
-        <div>
-          <p class="throw-type">ASHI-WAZA / FOOT-LEG</p>
-          <h2>O-SOTO-GARI</h2>
+          <div class="overview">
+            <p class="eyebrow">HOW TO READ THIS TECHNIQUE</p>
+            <h3>FORWARD KUZUSHI</h3>
+            <p>
+              O-goshi is a hip technique. Its kuzushi generally
+              guides uke's balance forward before the hip-based
+              turning movement. The aim is to disturb the relationship
+              between the centre of mass and the base of support,
+              rather than simply pull the partner upward.
+            </p>
+            <p>
+              While watching the video, look at the movement before
+              the throw becomes obvious. Pay attention to how the
+              upper body, the partner's feet, and the direction of
+              travel relate to one another.
+            </p>
+            <div class="key-point">
+              <strong>MAIN IDEA</strong>
+              <p>
+                The characteristic direction is forward, often
+                toward a forward diagonal. The direction is based on
+                uke's balance, and the exact angle depends on the
+                side, grip, and teaching variation.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <a class="button primary small"
-          href="animation.html?throw=osotogari"
-          target="_blank" rel="noopener">VIEW ANIMATION ↗</a>
-      </div>
+        <div class="divider"></div>
 
-      <ol class="steps">
-        <li>
-          <b>Kuzushi · Off-balance</b>
-          <p>
-            Learn to guide the partner's balance backward under the
-            coach's direction, while staying upright and stable yourself.
-          </p>
-        </li>
+        <section class="kuzushi-section">
+          <div class="kuzushi-heading">
+            <p class="eyebrow">PHASE 01 / THE MAIN FOCUS</p>
+            <h3>WHERE DOES THE BALANCE GO?</h3>
+            <p>
+              For O-goshi, study the forward direction of imbalance.
+              A forward movement is toward the front of uke's body,
+              where the toes point. Depending on the entry and side,
+              the line may be forward and slightly diagonal.
+            </p>
+          </div>
 
-        <li>
-          <b>Tsukuri · Entry</b>
-          <p>
-            Step into the correct position beside the partner. Keep the
-            chest and posture controlled; do not collide or rush the entry.
-          </p>
-        </li>
+          <div class="direction-card">
+            <div class="direction-visual">
+              <div class="direction-word">FORWARD</div>
+              <span class="direction-arrow">↑</span>
+              <div class="direction-subtitle">TOWARD THE TOES</div>
+            </div>
+            <div class="direction-details">
+              <h4>Forward, sometimes forward-diagonal</h4>
+              <p>
+                The general aim of kuzushi is to guide uke's balance
+                toward the front of their base of support. In the
+                demonstration, observe how the practitioner's
+                controlled upper-body movement relates to the
+                direction uke's body begins to travel.
+              </p>
+              <p class="direction-emphasis">
+                <b>Look for:</b> the transition from a balanced
+                posture to a forward shift. The direction is not
+                the same as lifting someone straight up or pulling
+                them randomly toward yourself.
+              </p>
+            </div>
+          </div>
 
-        <li>
-          <b>Kake · Execution</b>
-          <p>
-            The reaping leg and upper-body direction work together to
-            remove support. Because this can cause a hard fall, only a
-            coach should teach and supervise the actual action.
-          </p>
-        </li>
+          <div class="not-the-same">
+            <strong>Do not confuse direction with force.</strong>
+            Kuzushi is not always a literal push. Depending on the
+            grip and movement, a practitioner may use controlled
+            pulling, pushing, turning, or a combination. The key
+            observation is the direction in which uke's balance
+            is being guided.
+          </div>
+        </section>
 
-        <li>
-          <b>Review</b>
-          <p>
-            Why does timing matter when the partner's weight is on the
-            target leg? Discuss it with your instructor before practising.
-          </p>
-        </li>
-      </ol>
-    </article>
-
-    <article class="guide-card" id="seoi">
-      <div class="guide-title">
-        <span class="throw-number">03</span>
-
-        <div>
-          <p class="throw-type">TE-WAZA / HAND</p>
-          <h2>IPPON-SEOI-NAGE</h2>
+        <div class="phases-heading">
+          <h3>THE THREE PHASES</h3>
+          <p>Use these phases to organise what you observe in the video.</p>
         </div>
 
-        <a class="button primary small"
-          href="animation.html?throw=seoi"
-          target="_blank" rel="noopener">VIEW ANIMATION ↗</a>
+        <div class="phase-grid">
+          <article class="phase-card">
+            <span class="phase-index">01</span>
+            <h4>KUZUSHI · 崩し</h4>
+            <p>
+              The balance-breaking phase. Study how uke's balance is
+              guided forward and whether the movement places their
+              centre of mass closer to the front boundary of their
+              base of support.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              Which way is uke's body beginning to move? Does it
+              match the forward direction associated with O-goshi?
+            </div>
+          </article>
+
+          <article class="phase-card">
+            <span class="phase-index">02</span>
+            <h4>TSUKURI · 作り</h4>
+            <p>
+              The fitting-in and positioning phase. Observe how tori's
+              position changes in relation to uke. This is where
+              body position and the intended hip-based turning
+              relationship become easier to see.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              How does the entry relate to the earlier direction
+              of imbalance?
+            </div>
+          </article>
+
+          <article class="phase-card">
+            <span class="phase-index">03</span>
+            <h4>KAKE · 掛け</h4>
+            <p>
+              The execution phase. The movement continues into the
+              throw. Observe the direction of rotation and how the
+              demonstration maintains control through the finish.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              Can you recognise the earlier forward imbalance in
+              the final movement?
+            </div>
+          </article>
+        </div>
+
+        <div class="analysis-grid">
+          <article class="analysis-card">
+            <h4>WHAT TO LOOK FOR</h4>
+            <ul>
+              <li>Forward movement before the main turning action.</li>
+              <li>The relationship between uke's body and feet.</li>
+              <li>How the entry relates to the forward direction.</li>
+              <li>How the full movement connects rather than appearing as isolated actions.</li>
+            </ul>
+          </article>
+          <article class="analysis-card">
+            <h4>COMMON MISUNDERSTANDINGS</h4>
+            <ul>
+              <li>Thinking kuzushi means pulling upward.</li>
+              <li>Assuming forward always means perfectly straight ahead.</li>
+              <li>Ignoring how the angle can change with the side and grip.</li>
+              <li>Thinking a correct direction alone is enough to perform a throw safely.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="coach-question">
+          <span class="question">?</span>
+          <div>
+            <strong>CHECK YOUR UNDERSTANDING</strong>
+            <p>
+              If uke's toes point forward, what would a forward
+              direction of kuzushi mean? How would the direction
+              look different if uke's balance moved toward the heels?
+            </p>
+          </div>
+        </div>
+
+        <div class="jump-links">
+          <a href="#top">↑ BACK TO TOP</a>
+          <a href="#osotogari">NEXT: O-SOTO-GARI →</a>
+        </div>
       </div>
+    </section>
 
-      <ol class="steps">
-        <li>
-          <b>Kuzushi · Off-balance</b>
-          <p>
-            Guide the partner's balance forward through a supervised
-            grip and coordinated movement, not by pulling the arm forcefully.
-          </p>
-        </li>
+    <!-- O-SOTO-GARI -->
+    <section class="technique" id="osotogari">
+      <header class="technique-head">
+        <div class="heading-group">
+          <span class="technique-number">02</span>
+          <div>
+            <p class="technique-type">ASHI-WAZA / FOOT-LEG TECHNIQUE</p>
+            <h2>O-SOTO-GARI</h2>
+            <p class="japanese">大外刈 · Major outer reap</p>
+          </div>
+        </div>
+        <span class="study-label">STUDY 002</span>
+      </header>
 
-        <li>
-          <b>Tsukuri · Entry</b>
-          <p>
-            Turn in and lower your level with bent knees, keeping your
-            back and head in a safe, coached position. Alignment is
-            especially important.
-          </p>
-        </li>
+      <div class="technique-body">
+        <div class="top-grid">
+          <div>
+            <div class="video-label">
+              <span>THROW DEMONSTRATION</span>
+              <span>VIDEO REFERENCE</span>
+            </div>
+            <div class="video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/c-A_nP7mKAc?rel=0"
+                title="O-soto-gari demonstration"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+            <a class="video-fallback"
+              href="https://www.youtube.com/watch?v=c-A_nP7mKAc"
+              target="_blank" rel="noopener noreferrer">
+              OPEN VIDEO ON YOUTUBE ↗
+            </a>
+          </div>
 
-        <li>
-          <b>Kake · Execution</b>
-          <p>
-            The partner is guided over the shoulder line. This requires
-            accurate positioning and ukemi; do not attempt a full throw
-            from written instructions alone.
-          </p>
-        </li>
+          <div class="overview">
+            <p class="eyebrow">HOW TO READ THIS TECHNIQUE</p>
+            <h3>BACKWARD KUZUSHI</h3>
+            <p>
+              O-soto-gari is a foot-leg technique. Its general
+              kuzushi direction is backward, often toward a rear
+              diagonal. The relationship between uke's balance,
+              supporting leg, and upper-body movement is important
+              to observe.
+            </p>
+            <p>
+              Do not focus only on the reaping leg in the video.
+              Watch what happens to the upper body and balance
+              before the reaping action. This helps explain why
+              timing and direction work together.
+            </p>
+            <div class="key-point">
+              <strong>MAIN IDEA</strong>
+              <p>
+                The characteristic direction is backward, often
+                toward a rear corner. Observe how the change in
+                balance relates to the supporting leg, rather than
+                treating the technique as a leg swing by itself.
+              </p>
+            </div>
+          </div>
+        </div>
 
-        <li>
-          <b>Review</b>
-          <p>
-            Compare this shoulder-based leverage with O-goshi's
-            hip-based leverage. Which body position acts as the turning
-            point in each?
-          </p>
-        </li>
-      </ol>
-    </article>
+        <div class="divider"></div>
 
-  </section>
+        <section class="kuzushi-section">
+          <div class="kuzushi-heading">
+            <p class="eyebrow">PHASE 01 / THE MAIN FOCUS</p>
+            <h3>WHERE DOES THE BALANCE GO?</h3>
+            <p>
+              For O-soto-gari, study the backward direction of
+              imbalance. Backward means toward the rear of uke's
+              body, where the heels point. The line often has a
+              diagonal component, depending on the side and
+              situation shown.
+            </p>
+          </div>
 
-  <section class="safety-banner">
-    <span class="warning-icon">!</span>
-    <p>
-      <b>SAFETY FIRST:</b> Learn ukemi (breakfalls) before throwing practice.
-      Use a qualified instructor, an appropriate mat, and a willing partner.
-      Never practise these throws on friends or family as a game.
-    </p>
-  </section>
-</main>
+          <div class="direction-card">
+            <div class="direction-visual">
+              <div class="direction-word">BACKWARD</div>
+              <span class="direction-arrow">↓</span>
+              <div class="direction-subtitle">TOWARD THE HEELS</div>
+            </div>
+            <div class="direction-details">
+              <h4>Backward, sometimes rear-diagonal</h4>
+              <p>
+                The general aim of kuzushi is to guide uke's balance
+                toward the rear of their base of support. As you
+                watch, notice the change in posture and how the
+                upper-body movement relates to the leg action.
+              </p>
+              <p class="direction-emphasis">
+                <b>Look for:</b> the backward shift that comes before
+                and accompanies the main action. Pay attention to
+                which leg supports uke and how balance changes
+                around that support.
+              </p>
+            </div>
+          </div>
 
-<footer>
-  <span>CURSED DOJO © 2026</span>
-  <span>LEARN THE PRINCIPLE, NOT JUST THE MOVE.</span>
-</footer>
+          <div class="not-the-same">
+            <strong>Backward does not mean pulling straight down.</strong>
+            The direction describes where uke's balance is being
+            guided, not a single hand movement. The precise angle
+            can vary with the entry and side. The actual technique
+            and any leg action must be learned under direct coaching.
+          </div>
+        </section>
 
+        <div class="phases-heading">
+          <h3>THE THREE PHASES</h3>
+          <p>Follow the balance change before focusing on the leg action.</p>
+        </div>
+
+        <div class="phase-grid">
+          <article class="phase-card">
+            <span class="phase-index">01</span>
+            <h4>KUZUSHI · 崩し</h4>
+            <p>
+              The balance-breaking phase. Focus on the general
+              backward direction and the way uke's posture changes.
+              This is more informative than looking only at the
+              leg action later in the throw.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              Does uke's balance begin to shift toward the rear
+              before the main leg action?
+            </div>
+          </article>
+
+          <article class="phase-card">
+            <span class="phase-index">02</span>
+            <h4>TSUKURI · 作り</h4>
+            <p>
+              The positioning phase. Observe where tori is positioned
+              relative to uke and how this relates to the supporting
+              leg and the intended direction of imbalance.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              How does body position relate to the direction
+              uke's balance has been guided?
+            </div>
+          </article>
+
+          <article class="phase-card">
+            <span class="phase-index">03</span>
+            <h4>KAKE · 掛け</h4>
+            <p>
+              The execution phase. Observe how the upper-body
+              movement and leg action are coordinated. A leg
+              movement alone does not explain the full technique.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              How does the reaping action relate to the earlier
+              backward shift in balance?
+            </div>
+          </article>
+        </div>
+
+        <div class="analysis-grid">
+          <article class="analysis-card">
+            <h4>WHAT TO LOOK FOR</h4>
+            <ul>
+              <li>The general backward or rear-diagonal direction.</li>
+              <li>How uke's posture changes before the leg action.</li>
+              <li>The relationship between balance and the supporting leg.</li>
+              <li>How upper-body direction and leg action work together.</li>
+            </ul>
+          </article>
+          <article class="analysis-card">
+            <h4>COMMON MISUNDERSTANDINGS</h4>
+            <ul>
+              <li>Assuming the leg action alone creates the throw.</li>
+              <li>Confusing backward imbalance with simply stepping backward.</li>
+              <li>Ignoring the diagonal direction that may be used.</li>
+              <li>Trying to test the reaping action on another person without instruction.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="coach-question">
+          <span class="question">?</span>
+          <div>
+            <strong>CHECK YOUR UNDERSTANDING</strong>
+            <p>
+              Compared with O-goshi, which way is uke's balance
+              generally guided in O-soto-gari? What relationship
+              do you notice between that direction and the
+              supporting leg?
+            </p>
+          </div>
+        </div>
+
+        <div class="jump-links">
+          <a href="#top">↑ BACK TO TOP</a>
+          <a href="#ogoshi">← PREVIOUS: O-GOSHI</a>
+          <a href="#seoi">NEXT: IPPON-SEOI-NAGE →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- IPPON-SEOI-NAGE -->
+    <section class="technique" id="seoi">
+      <header class="technique-head">
+        <div class="heading-group">
+          <span class="technique-number">03</span>
+          <div>
+            <p class="technique-type">TE-WAZA / HAND TECHNIQUE</p>
+            <h2>IPPON-SEOI-NAGE</h2>
+            <p class="japanese">一本背負投 · One-arm shoulder throw</p>
+          </div>
+        </div>
+        <span class="study-label">STUDY 003</span>
+      </header>
+
+      <div class="technique-body">
+        <div class="top-grid">
+          <div>
+            <div class="video-label">
+              <span>THROW DEMONSTRATION</span>
+              <span>VIDEO REFERENCE</span>
+            </div>
+            <div class="video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/FQnOlCxo4oI?rel=0"
+                title="Ippon-seoi-nage demonstration"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+            <a class="video-fallback"
+              href="https://www.youtube.com/watch?v=FQnOlCxo4oI"
+              target="_blank" rel="noopener noreferrer">
+              OPEN VIDEO ON YOUTUBE ↗
+            </a>
+          </div>
+
+          <div class="overview">
+            <p class="eyebrow">HOW TO READ THIS TECHNIQUE</p>
+            <h3>FORWARD KUZUSHI</h3>
+            <p>
+              Ippon-seoi-nage is a shoulder throw. Like O-goshi,
+              its general kuzushi direction is forward, often with
+              a diagonal component. However, the positioning and
+              turning relationship differs from a hip throw.
+            </p>
+            <p>
+              Pay attention to the change in uke's balance before
+              the main turning movement. Then observe how tori's
+              position changes relative to uke and the intended
+              direction of movement.
+            </p>
+            <div class="key-point">
+              <strong>MAIN IDEA</strong>
+              <p>
+                The characteristic direction is forward, often
+                forward-diagonal. Compare this with O-goshi:
+                both generally use forward kuzushi, but they differ
+                in their entry, body position, and turning relationship.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <section class="kuzushi-section">
+          <div class="kuzushi-heading">
+            <p class="eyebrow">PHASE 01 / THE MAIN FOCUS</p>
+            <h3>WHERE DOES THE BALANCE GO?</h3>
+            <p>
+              For Ippon-seoi-nage, study forward imbalance, commonly
+              with a diagonal component. Front means toward uke's
+              toes. The exact angle depends on the side and variation
+              shown in the demonstration.
+            </p>
+          </div>
+
+          <div class="direction-card">
+            <div class="direction-visual">
+              <div class="direction-word">FORWARD</div>
+              <span class="direction-arrow">↗</span>
+              <div class="direction-subtitle">FRONT / DIAGONAL</div>
+            </div>
+            <div class="direction-details">
+              <h4>Forward, often forward-diagonal</h4>
+              <p>
+                The general aim is to guide uke's balance forward
+                before the turning action. Watch for the relationship
+                between uke's upper-body movement and the direction
+                the body begins to travel.
+              </p>
+              <p class="direction-emphasis">
+                <b>Look for:</b> a forward shift followed by the
+                turning movement. Compare the general balance
+                direction to O-goshi, then look for the differences
+                in how tori positions the body.
+              </p>
+            </div>
+          </div>
+
+          <div class="not-the-same">
+            <strong>Same general direction, different technique.</strong>
+            O-goshi and Ippon-seoi-nage can both use forward kuzushi.
+            This does not make them the same throw. The entry,
+            body position, and turning relationship differ.
+            The exact angle is not identical in every variation.
+          </div>
+        </section>
+
+        <div class="phases-heading">
+          <h3>THE THREE PHASES</h3>
+          <p>Compare the forward imbalance with the shoulder-based entry.</p>
+        </div>
+
+        <div class="phase-grid">
+          <article class="phase-card">
+            <span class="phase-index">01</span>
+            <h4>KUZUSHI · 崩し</h4>
+            <p>
+              The balance-breaking phase. Observe the general
+              forward direction and how uke's balance changes
+              before the main turning movement.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              Is uke's balance being guided forward, and does
+              the movement include a diagonal component?
+            </div>
+          </article>
+
+          <article class="phase-card">
+            <span class="phase-index">02</span>
+            <h4>TSUKURI · 作り</h4>
+            <p>
+              The positioning phase. Observe how tori turns into
+              the shoulder-based position and how that entry
+              relates to the earlier forward imbalance.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              How is the turning entry different from the
+              hip-based position seen in O-goshi?
+            </div>
+          </article>
+
+          <article class="phase-card">
+            <span class="phase-index">03</span>
+            <h4>KAKE · 掛け</h4>
+            <p>
+              The execution phase. Observe how the turning
+              movement and upper-body control lead into the
+              throw. Pay attention to control through the finish.
+            </p>
+            <div class="observe">
+              <b>OBSERVE</b>
+              How does the final movement relate to the earlier
+              forward direction of imbalance?
+            </div>
+          </article>
+        </div>
+
+        <div class="analysis-grid">
+          <article class="analysis-card">
+            <h4>WHAT TO LOOK FOR</h4>
+            <ul>
+              <li>Forward imbalance before the turn.</li>
+              <li>Any diagonal component in the direction of movement.</li>
+              <li>How the entry differs from O-goshi.</li>
+              <li>How the practitioner maintains control throughout the demonstration.</li>
+            </ul>
+          </article>
+          <article class="analysis-card">
+            <h4>COMMON MISUNDERSTANDINGS</h4>
+            <ul>
+              <li>Assuming all forward-direction throws use the same entry.</li>
+              <li>Watching only the shoulder area and ignoring uke's balance.</li>
+              <li>Assuming the arrow must be perfectly straight forward.</li>
+              <li>Attempting a shoulder throw without supervised practice and breakfall training.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="coach-question">
+          <span class="question">?</span>
+          <div>
+            <strong>CHECK YOUR UNDERSTANDING</strong>
+            <p>
+              Both O-goshi and Ippon-seoi-nage generally use
+              forward kuzushi. What difference do you notice in
+              their entries and turning positions?
+            </p>
+          </div>
+        </div>
+
+        <div class="jump-links">
+          <a href="#top">↑ BACK TO TOP</a>
+          <a href="#osotogari">← PREVIOUS: O-SOTO-GARI</a>
+          <a href="basics.html">REVIEW THE FUNDAMENTALS ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety">
+      <strong>SAFETY FIRST</strong>
+      <p>
+        These direction notes are for understanding and video
+        observation, not for practising a throw from written
+        instructions alone. Learn with a qualified judo instructor,
+        on suitable mats, and after learning how to fall safely.
+        Do not test throws on friends or family.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span>CURSED DOJO © 2026</span>
+    <span>LEARN THE PRINCIPLE, NOT JUST THE MOVE.</span>
+  </footer>
 </body>
 </html>
